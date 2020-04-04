@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  box-sizing: border-box;
+  font-size: calc(0.5em + 1vw);
+  --darkgray-bg: #424242;
+  --white-color: #ffffff;
+}
+  
+*, *::before,*::after { box-sizing: inherit }
+
+body { 
+  margin: 0; 
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--darkgray-bg);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="login">
+        <div><h2>Login</h2></div>
+        <div>
+            <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <mat-form-field>
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput 
+                    formControlName="email" 
+                    #email
+                    required>
+                    <button *ngIf="email.value" 
+                      (click)="email.value = ''" 
+                      matSuffix type="button"
+                      mat-icon-button>
+                    <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error 
+                      *ngIf="loginForm.hasError('required') && 
+                        loginForm.get('email').touched">incorrect email</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput 
+                      [type]="hide ? 'password' : 'text'"
+                      formControlName="password" 
+                      required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide">
+                        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('password').invalid && 
+                      loginForm.get('password').touched">incorrect password</mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button 
+                  color="primary" 
+                  type="submit"
+                  [disabled]="loginForm.invalid"
+                  >Submit</button> 
+                <p><span>Don't have an account? </span>
+                   <a routerLink="/register">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+</div>
